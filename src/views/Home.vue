@@ -1,21 +1,18 @@
 <template>
   <div id="app">
-    <Header />
     <AddTodo v-on:add="addTodo" />
     <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" />
   </div>
 </template>
 
 <script>
-import Header from './components/layout/Header';
-import Todos from './components/Todos';
-import AddTodo from './components/AddTodo';
+import Todos from '../components/Todos';
+import AddTodo from '../components/AddTodo';
 import axios from 'axios'
 
 export default {
-  name: 'App',
+  name: 'Home',
   components: {
-    Header,
     Todos,
     AddTodo
   },
@@ -26,9 +23,8 @@ export default {
   },
   methods: {
     deleteTodo(id) {
-      axios.post(`https://jsonplaceholder.typicode.com/todos/${id} 
-      `)
-        .then(res => this.todos = this.todos.filter(todo => todo.id !== id))
+      axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+        .then(res => this.todos = this.todos.filter(todo => todo.id !== id, res.data))
         .catch(err => console.log(err));
     },
     addTodo(newTodo) {
