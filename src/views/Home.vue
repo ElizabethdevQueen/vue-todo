@@ -1,6 +1,8 @@
 <template>
+<!-- Brad traversy youtube -->
   <div id="app">
     <Header />
+    
     <AddTodo v-on:add="addTodo" />
     <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" />
   </div>
@@ -15,6 +17,7 @@ import axios from 'axios'
 export default {
   name: 'Home',
   components: {
+    Header,
     Todos,
     AddTodo
   },
