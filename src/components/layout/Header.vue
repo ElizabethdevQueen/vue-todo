@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style >
     .header {
         background: rgb(236, 144, 144);
         color: #fff;
